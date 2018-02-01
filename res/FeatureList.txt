@@ -1,0 +1,22 @@
+Extra Features :)
+
+- Logo in UI
+- custom font loading
+- icon support ( confirmed to work on windows )
+- Background color changes for better viewing / screenshots?
+- plenty of stuff to click and drag in UI
+- shortcuts in UI
+- Helix Meshes for cartoon view
+- Sheet Meshes for cartoon view
+- smooth loops for cartoon view
+- Helixe / Sheets etc. are few big Meshes, not many small ones.
+- list of possible pdb files can searched for in search bar
+- Own Texture for coloring -> texture support
+- automatic mesh rotation for better viewing
+- Resettable camera position / graph rotation
+- graph dragging with rightclick
+- zoom into graph ( by scrolling )
+- Do / Undo for selection and Coloring / From Changes
+- Node / Bondscaling
+- header num atoms, form / color mode
+- online pdb search can be closed and opened

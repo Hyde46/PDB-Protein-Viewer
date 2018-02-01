@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="762.0" type="BorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presenters.PDBConnector">
+   <center>
+      <VBox fx:id="centerPane" prefWidth="741.0" BorderPane.alignment="CENTER">
+         <StackPane fx:id="tertiaryViewPane" VBox.vgrow="ALWAYS">
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <Pane fx:id="botPane" prefWidth="730.0" style="-fx-background-color: black;" />
+            <Pane fx:id="topPane" pickOnBounds="false" />
+            <ImageView fx:id="logoView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/views/fxmlviews/images/logo.png" />
+               </image>
+            </ImageView>
+            <padding>
+               <Insets bottom="10.0" left="15.0" />
+            </padding>
+         </StackPane>
+      </VBox>
+   </center>
+    <right>
+        <VBox fx:id="listBox" prefWidth="0.0" visible="false" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="5.0" right="1.0" />
+            </padding>
+            <TextField fx:id="searchField" promptText="Search Peptide" />
+            <ListView fx:id="listView" prefHeight="694.0" BorderPane.alignment="CENTER" />
+        </VBox>
+    </right>
+   <bottom>
+   </bottom>
+   <left>
+      <!--<HBox prefHeight="23.0" prefWidth="600.0">-->
+       <ToolBar fx:id="toolBar" orientation="VERTICAL" pickOnBounds="false" prefHeight="40.0" prefWidth="150.0" BorderPane.alignment="TOP_CENTER">
+          <VBox pickOnBounds="false">
+             <Label alignment="TOP_CENTER" contentDisplay="TOP" text="File" />
+             <Button fx:id="loadButton" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" text="Load Local" />
+             <Button fx:id="loadOnlineButton" mnemonicParsing="false" text="Load Online" />
+             <Button fx:id="showChartsButton" mnemonicParsing="false" text="Charts" />
+          </VBox>
+         <Separator />
+          <VBox>
+             <Text fill="#616161" strokeType="OUTSIDE" strokeWidth="0.0" text="Node Scale" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="138.74609375" VBox.vgrow="NEVER" />
+             <Slider fx:id="nodeSizeSlider" blockIncrement="0.5" majorTickUnit="1.0" max="10.0" min="0.5" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+          </VBox>
+         <Separator />
+           <VBox>
+               <Text fill="#616161" strokeType="OUTSIDE" strokeWidth="0.0" text="Bond Scale" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="138.74609375" VBox.vgrow="NEVER" />
+               <Slider fx:id="bondSizeSlider" blockIncrement="0.1" majorTickUnit="0.5" max="3.0" min="0.5" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+           </VBox>
+         <Separator />
+           <VBox>
+               <Button fx:id="resetButton" mnemonicParsing="false" text="Reset" />
+               <CheckBox fx:id="autoTransformCheckBox" mnemonicParsing="false" text="Enable auto-rotation" />
+           </VBox>
+         <Separator />
+           <VBox>
+               <Label text="Coloring" textFill="#615e5e">
+                   <font>
+                       <Font size="16.0" />
+                   </font>
+               </Label>
+               <RadioButton fx:id="structureTypeButton" mnemonicParsing="false" selected="true" text="Structure">
+                   <toggleGroup>
+                       <ToggleGroup fx:id="color" />
+                   </toggleGroup>
+               </RadioButton>
+               <RadioButton fx:id="acidTypeButton" mnemonicParsing="false" text="Acid type" toggleGroup="$color" />
+           </VBox>
+         <Separator />
+           <VBox layoutX="10.0" layoutY="300.0">
+               <Label text="Form" textFill="#615e5e">
+                   <font>
+                       <Font size="16.0" />
+                   </font>
+               </Label>
+               <RadioButton fx:id="mainAtomButton" mnemonicParsing="false" selected="true" text="Main Atoms">
+                   <toggleGroup>
+                       <ToggleGroup fx:id="structure" />
+                   </toggleGroup>
+               </RadioButton>
+               <RadioButton fx:id="spaceFillingButton" mnemonicParsing="false" text="Space Filling" toggleGroup="$structure" />
+               <RadioButton fx:id="backBoneButton" layoutX="10.0" layoutY="28.0" mnemonicParsing="false" text="Backbone" toggleGroup="$structure" />
+               <RadioButton fx:id="ribbonButton" layoutX="10.0" layoutY="46.0" mnemonicParsing="false" text="Ribbon" toggleGroup="$structure" />
+               <RadioButton fx:id="cartoonButton" layoutX="10.0" layoutY="80.0" mnemonicParsing="false" text="Cartoon" toggleGroup="$structure" />
+           </VBox>
+       </ToolBar>
+   </left>
+   <bottom>
+      <ScrollPane fx:id="structurePane" maxHeight="75.0" prefHeight="75.0" prefWidth="686.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+       <VBox BorderPane.alignment="CENTER">
+           <MenuBar>
+               <Menu mnemonicParsing="false" text="File">
+                   <MenuItem fx:id="loadFile" mnemonicParsing="false" text="Load File">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="showList" mnemonicParsing="false" text="Load Online PDB">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="closeButton" mnemonicParsing="false" text="Close">
+                       <accelerator>
+                           <KeyCodeCombination alt="DOWN" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Edit">
+                   <MenuItem fx:id="undoButton" mnemonicParsing="false" text="Undo">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="redoButton" mnemonicParsing="false" text="Redo">
+                       <accelerator>
+                           <KeyCodeCombination alt="DOWN" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="selectAllButton" mnemonicParsing="false" text="Select All">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="A" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="selectNoneButton" mnemonicParsing="false" text="Select None">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Tools">
+                   <MenuItem fx:id="autoRotateButton" mnemonicParsing="false" text="Auto Rotate">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="showChartsItem" mnemonicParsing="false" text="Show Charts">
+                       <accelerator>
+                           <KeyCodeCombination alt="DOWN" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+                   <MenuItem fx:id="bgColorButton" mnemonicParsing="false" text="Toggle Backgroundcolor">
+                       <accelerator>
+                           <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                       </accelerator>
+                   </MenuItem>
+               </Menu>
+               <Menu mnemonicParsing="false" text="View">
+                   <Menu mnemonicParsing="false" text="Color Mode">
+                       <RadioMenuItem fx:id="structureColorButton" mnemonicParsing="false" text="Structure Colors">
+                           <accelerator>
+                               <KeyCodeCombination alt="DOWN" code="DIGIT1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                       <RadioMenuItem fx:id="typeColorButton" mnemonicParsing="false" selected="true" text="Acidtype Colors">
+                           <accelerator>
+                               <KeyCodeCombination alt="DOWN" code="DIGIT2" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                   </Menu>
+                   <Menu mnemonicParsing="false" text="Form Mode">
+                       <RadioMenuItem fx:id="mainFormButton" mnemonicParsing="false" selected="true" text="Main Atoms">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="DIGIT1" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                       <RadioMenuItem fx:id="spaceFormButton" mnemonicParsing="false" text="Space Filling">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="DIGIT2" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                       <RadioMenuItem fx:id="backboneFormButton" mnemonicParsing="false" text="Backbone">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="DIGIT3" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                       <RadioMenuItem fx:id="ribbonFormButton" mnemonicParsing="false" text="Ribbon">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="DIGIT4" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                       <RadioMenuItem fx:id="cartoonFormButton" mnemonicParsing="false" text="Cartoon">
+                           <accelerator>
+                               <KeyCodeCombination alt="UP" code="DIGIT5" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                       </RadioMenuItem>
+                   </Menu>
+               </Menu>
+           </MenuBar>
+           <ToolBar maxHeight="25.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <Label text="Atom count:" />
+               <TextField fx:id="atomCountField" editable="false" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: TRANSPARENT;" />
+               <Separator orientation="VERTICAL" />
+               <Label text="Coloring:" />
+               <TextField fx:id="coloringField" editable="false" prefHeight="20.0" prefWidth="80.0" style="-fx-background-color: TRANSPARENT;" />
+               <Separator orientation="VERTICAL" />
+               <Label text="Form:" />
+               <TextField fx:id="formField" editable="false" prefHeight="20.0" prefWidth="120.0" style="-fx-background-color: TRANSPARENT;" />
+           </ToolBar>
+           <Separator prefWidth="200.0" />
+       </VBox>
+   </top>
+</fx:root>
