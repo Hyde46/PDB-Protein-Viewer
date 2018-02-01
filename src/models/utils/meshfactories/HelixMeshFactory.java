@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  * @author Denis Heid(denis.heid@student.uni-tuebingen.de),
- *          Friederike Hanssen (denis.heid@student.uni-tuebingen.de)
+ *          Friederike Hanssen (friederike.hanssen@student.uni-tuebingen.de)
  */
 public class HelixMeshFactory{
 
