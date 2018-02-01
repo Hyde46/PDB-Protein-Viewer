@@ -21,7 +21,10 @@ import views.graphviews.viewobjects.ALine3D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+/**
+* @author Denis Heid (denis.heid@student.uni-tuebingen.de)
+          Friederike Hanssen (friederike.hanssen@student.uni-tuebingen.de)
+*/
 public class LoopFactory {
     private static final List<ALine3D> myLines = new ArrayList<>();
 
