@@ -5,7 +5,10 @@ A Protein visualization Tool written in Java / JavaFX to display Proteins from P
 
 
 ## Getting Started
-This project can easily be set up in IntelliJ by creating a new Project and cloning from VCS ( Github obviously)
+Clone this project into your working directory
+```
+git clone https://github.com/Hyde46/PDB-Protein-Viewer.git
+```
 
 ## Prerequisites
 
